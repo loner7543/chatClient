@@ -11,20 +11,16 @@
 <dom-module id="main-app">
   <template>
 	
-	
-	<app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
-	
-	<div>
-	</div>
-	
 	<paper-toolbar>
-		<div class="title">Yo,Man!</div>		
+		<div class="title">Чат</div>
 	</paper-toolbar>
+
+	  <app-location route="{{route}}"></app-location>
+	  <app-route
+			  route="{{route}}"
+			  pattern="/:page"
+			  data="{{routeData}}"
+			  tail="{{subroute}}"></app-route>
 	
 	<iron-pages id="pages"
 				role="main"
@@ -32,7 +28,7 @@
 				selected-attribute="active"
 				attr-for-selected="name"
 				fallback-selection="show">
-					<chat-page name="chat" user="{{user}}" id="chat"></chat-page>
+					<chat-page name="chat" user="{{user}}" id="chat"></chat-page><!--передали пользователя-->
 					<login-page name="login" user="{{user}}"></login-page>
 	</iron-pages>
 

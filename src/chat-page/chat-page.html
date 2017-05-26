@@ -15,7 +15,7 @@
 				</template>
 				<template is="dom-repeat" items="{{items}}">
 					<div class="txt">
-						<span class="time">{{getDate(index)}}</span> <b style$="[[getColor(index)]]">{{getName(index)}}</b>:Yo!
+						 <b style$="[[getColor(index)]]">{{getName(index)}}</b><span class="time">{{getDate(index)}}</span>--Yo!
 					</div>
 				</template>					
 			</div>
@@ -59,7 +59,7 @@
 					type:Array,
 					value()
 					{
-						return ["#ff4949","#5652c7","#2a9c2c","#21b7c3","#dbdd07","#f9971d","#9347d4","#d831b0","#8ccc32","#ce2626"];
+						return ["#f24949"];
 					}
 				},
 				isLoading:{
@@ -73,12 +73,6 @@
 			},			
 			ready(){
 				let self = this;
-				/*this.$.container.onscroll=e=>{
-					let scrolled = self.$.container.scrollTop;
-					if(scrolled === 0){
-						self.debounce("load",self.loadItems,250);
-					}
-				}*/
 				
 			},	
 			onTrack(e){			
