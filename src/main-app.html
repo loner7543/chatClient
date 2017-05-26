@@ -1,12 +1,12 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
-<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../../bower_components/app-route/app-location.html">
-<link rel="import" href="../../bower_components/app-route/app-route.html">
-<link rel="import" href="../login-page/login-page.html">
-<link rel="import" href="../chat-page/chat-page.html">
-<link rel="stylesheet" href="../css/main.css">
-<script src = "./NetworkUtils.js"></script>
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="login-page.html">
+<link rel="import" href="chat-page.html">
+<link rel="stylesheet" href="css/main.css">
+<script src = "js/NetworkUtils.js"></script>
 
 <dom-module id="main-app">
   <template>
@@ -64,7 +64,7 @@
 			});
 		},
 		goToLogin(){
-			this.async(function(){
+			this.async(function(){// возвращает промис
 				if(this.routeData.page!='login'){
 					this.set('routeData.page',"login");
 				}
