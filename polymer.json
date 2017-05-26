@@ -1,0 +1,18 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/main-app/main-app.html",
+  "fragments": [
+	"src/chat-page/chat-page.html",
+	"src/login-page/login-page.html"
+  ],
+  "sourceGlobs": [
+   "src/**/*",
+   "bower.json",
+   "index.html"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "images/*",
+    "bower_components/webcomponentsjs/webcomponents-lite.js"
+  ]
+}

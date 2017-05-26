@@ -1,0 +1,86 @@
+<html><head><meta charset="UTF-8">
+
+
+
+
+
+
+<script src="./NetworkUtils.js"></script>
+
+</head><body><dom-module id="main-app">
+  <template>
+    <style>
+      :host {
+        display: block;		
+      }
+	  .btn{
+		width:48px;
+		height:48px;
+		border-radius:4px;
+	  }
+	  .btn:hover{
+		background:rgba(0,0,0,0.2);
+	  }
+	  
+    </style>
+	
+	
+	<app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+	
+	<div>
+	</div>
+	
+	<paper-toolbar>
+		<div class="title">Yo,Man!</div>		
+	</paper-toolbar>
+	
+	<iron-pages id="pages" role="main" selected="[[routeData.page]]" selected-attribute="active" attr-for-selected="name" fallback-selection="show">
+					<chat-page name="chat" user="{{user}}" id="chat"></chat-page>
+					<login-page name="login" user="{{user}}"></login-page>
+	</iron-pages>
+
+  </template>
+
+  <script>
+    Polymer({
+
+		is: 'main-app',
+		attached(){
+			this.goToLogin();
+		},
+		listeners:{
+			'login':'goToChat'
+		},
+		properties:{
+			user:{
+				type:Object,
+				value(){
+					return {
+						name:"",
+						server:""
+					}
+				}
+			}
+		},
+		goToChat(){		
+			this.async(function(){
+				if(this.routeData.page!='chat'){
+					this.set('routeData.page',"chat");	
+					this.$.chat.beginDataLoad();
+				}
+			});			
+		},
+		goToLogin(){
+			this.async(function(){
+				if(this.routeData.page!='login'){
+					this.set('routeData.page',"login");				
+				}
+			});
+		}
+	
+
+    });
+  </script>
+</dom-module>
+</body></html>

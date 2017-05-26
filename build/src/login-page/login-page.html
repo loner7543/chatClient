@@ -1,0 +1,50 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="../main-app/main-app.html"></head><body><dom-module id="login-page">
+	<template>
+		<style>
+			.container{
+				padding-top:12px;
+				height:100%;
+				overflow-y:auto;
+				display:flex;
+				flex-flow:column;
+	
+			}
+			.btn{
+				background:#3f51b5;
+				color:white;
+			}
+		</style>
+		
+		
+		<div class="container">
+			<paper-input label="Username" value="{{user.name}}"></paper-input>
+			<paper-input label="Server" value="{{user.server}}"></paper-input>
+			<paper-button raised="" class="btn" id="login">Login</paper-button>
+		</div>
+		
+		
+	</template>
+	<script>
+		Polymer({
+			is:"login-page",
+			properties:{
+				user:{
+					type:Object,
+					value(){
+						return {
+							name:"",
+							server:""
+						}
+					}
+				}			
+			},
+			listeners:{
+				'login.tap':'onLogin'
+			},
+			onLogin(){
+				this.fire("login");			
+			}
+		
+		});
+	</script>
+</dom-module></body></html>
