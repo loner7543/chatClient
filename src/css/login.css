@@ -1,12 +1,13 @@
 .container{
-    padding-top:12px;
     height:100%;
-    overflow-y:auto;
     display:flex;
+    overflow-y:auto;
     flex-flow:column;
 
 }
 .btn{
-    background:#3f51b5;
+    text-align: center;
+    align: center;
+    background:#6EE980;
     color:white;
 }
