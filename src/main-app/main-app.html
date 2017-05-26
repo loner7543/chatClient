@@ -5,24 +5,11 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../login-page/login-page.html">
 <link rel="import" href="../chat-page/chat-page.html">
+<link rel="stylesheet" href="../css/main.css">
 <script src = "./NetworkUtils.js"></script>
 
 <dom-module id="main-app">
   <template>
-    <style>
-      :host {
-        display: block;		
-      }
-	  .btn{
-		width:48px;
-		height:48px;
-		border-radius:4px;
-	  }
-	  .btn:hover{
-		background:rgba(0,0,0,0.2);
-	  }
-	  
-    </style>
 	
 	
 	<app-location route="{{route}}"></app-location>

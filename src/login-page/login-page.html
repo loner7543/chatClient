@@ -2,25 +2,10 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="stylesheet" href="../css/login.css">
 
 <dom-module id="login-page">
 	<template>
-		<style>
-			.container{
-				padding-top:12px;
-				height:100%;
-				overflow-y:auto;
-				display:flex;
-				flex-flow:column;
-	
-			}
-			.btn{
-				background:#3f51b5;
-				color:white;
-			}
-		</style>
-		
-		
 		<div class="container">
 			<paper-input label="Username" value={{user.name}}></paper-input>
 			<paper-input label="Server" value={{user.server}}></paper-input>
