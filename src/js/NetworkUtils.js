@@ -16,16 +16,16 @@
 	}
 	function send(data){
 		if(socket){
-			switch(socket.readyState){
-				case 2:
-				case 3:
+			switch(socket.readyState){//анализирем состояние подлючения
+				case 2://в процессе закрытия
+				case 3://закрыто
 					socket=new WebSocket(_path);
-				case 0:
+				case 0:// соединение еще не открыто
 					socket.onopen=()=>{
 						socket.send(data);
 					}
 				break;
-				case 1:
+				case 1://готово
 					socket.send(data);
 				break;		
 			}			

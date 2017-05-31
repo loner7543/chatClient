@@ -20,7 +20,8 @@
 				</template>					
 			</div>
 		<div class="add-button">
-			<paper-fab style="color:whie;" id="add" label="Yo!"></paper-fab>
+			<paper-fab style="color:whie;" id="add" label="Yo!"></paper-fab><br>
+			<paper-button id="loadBtn">load many</paper-button>
 		</div>
 	</template>
 	<script>
@@ -41,6 +42,11 @@
 				last:{
 					type:Number,
 					value: +new Date()
+				},
+
+				mesCount:{
+                    type:Number,
+                    value: 10
 				},
 				items:{
 					type:Array,
@@ -69,7 +75,8 @@
 			},
 			listeners:{
 				'add.tap':'sendMessage',				
-				'container.track':'onTrack'
+				'container.track':'onTrack',
+				'loadBtn.tap':'handleTap'
 			},			
 			ready(){
 				let self = this;
@@ -83,9 +90,14 @@
 					self.debounce("load",self.loadItems,250);					
 				}
 			},
+            handleTap: function(e) {
+			    console.log(e);
+                this.mesCount+=10;
+			    this.loadItems();
+            },
 			beginDataLoad(){
 				let self = this;
-				NetworkUtils.ws("ws://"+this.user.server+"/ws",mes=>{				
+				NetworkUtils.ws("ws://"+this.user.server+"/ws",mes=>{			//отерываем подключение
 					self.push("items",JSON.parse(mes.data))					
 				});
 				this.loadItems();							
@@ -93,11 +105,13 @@
 			loadItems(){
 				let self = this;
 				self.set("isLoading",true);
-				NetworkUtils.makeRequest("http://"+this.user.server+"/api/msg?from="+this.last,data=>{
+				NetworkUtils.makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,data=>{//передали последнюю дату в запрос - вернутся все сообщения
 					let newItems =JSON.parse(data);
-					for(let i = 0; i<newItems.length;i++){
-						self.unshift("items",newItems[i]);					
-					}
+					this.set('items', newItems.reverse());
+					//self.items=newItems;
+//					for(let i = 0; i<newItems.length;i++){
+//						self.items.push(newItems[i])//self.push("items",newItems[i]);
+//					}
 					let msgs= self.items;
 					if(msgs.length){
 						this.last=msgs[0].stamp;
