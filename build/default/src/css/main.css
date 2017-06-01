@@ -1,0 +1,13 @@
+:host {
+    display: block;
+}
+.btn{
+    width:55px;
+    height:55px;
+}
+.btn:hover{
+    background:#D0FF00;
+}
+.toolbar{
+    background:#D0FF00;
+}

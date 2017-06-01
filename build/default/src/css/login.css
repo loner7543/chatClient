@@ -1,0 +1,13 @@
+.container{
+    height:100%;
+    display:flex;
+    overflow-y:auto;
+    flex-flow:column;
+
+}
+.btn{
+    text-align: center;
+    align: center;
+    background:#6EE980;
+    color:white;
+}

@@ -1,0 +1,40 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="stylesheet" href="../css/login.css">
+
+</head><body><dom-module id="login-page">
+	<template>
+		<div class="container">
+			<paper-input label="Пользователь" value="{{user.name}}"></paper-input>
+			<paper-input label="Адрес сервера" value="{{user.server}}">localhost:8080</paper-input>
+			<paper-button raised="" class="btn" id="login">Войти</paper-button>
+		</div>
+		
+		
+	</template>
+	<script>
+		Polymer({
+			is:"login-page",
+			properties:{
+				user:{
+					type:Object,
+					value(){
+						return {
+							name:"",
+							server:""
+						}
+					}
+				}			
+			},
+			listeners:{
+				'login.tap':'goChat'
+			},
+            goChat(){
+				this.fire("login");			
+			}
+		
+		});
+	</script>
+</dom-module></body></html>

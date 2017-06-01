@@ -1,0 +1,173 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="stylesheet" href="../css/chat.css">
+
+
+<dom-module id="chat-page">
+	<template>
+			<div class="container" id="container">		
+				<template is="dom-if" if="{{isLoading}}">
+					<div style="display:flex;flex-flow:column;align-items:center;">
+						<div class="loading"></div>
+					</div>
+				</template>
+				<template is="dom-repeat" items="{{mass}}" id="rep">
+					<div class="txt">
+						 <b style$="[[getColor(index)]]">{{item}}</b><span>   Yo!</span>
+					</div>
+				</template>					
+			</div>
+		<div class="add-button">
+			<paper-fab style="color:whie;" id="add" label="Yo!"></paper-fab><br>
+			<paper-button id="loadBtn">load many</paper-button>
+		</div>
+	</template>
+	<script>
+        window.addEventListener("WebComponentsReady", function(){
+            console.log("ready");
+		Polymer({
+			is:"chat-page",
+			properties:{
+				user:{
+					type:Object,
+					value(){
+						return {
+							name:"",
+							server:""
+						}
+					}
+				},
+				last:{
+					type:Number,
+					value: +new Date()
+				},
+
+				mesCount:{
+                    type:Number,
+                    value: 3
+				},
+				mass:{
+					type:Array,
+					value: []
+//					value(){
+//						return [];
+//					},
+//					notify:true,
+				},
+				colorMap:{
+					type:Object,
+					value(){
+						return {}
+					}
+				},
+				colors:{
+					type:Array,
+					value()
+					{
+						return ["#f24949"];
+					}
+				},
+				isLoading:{
+					type:Boolean,
+					value:false
+				}
+			},
+			listeners:{
+				'add.tap':'sendMessage',				
+				'container.track':'onTrack',
+				'loadBtn.tap':'handleTap'
+			},			
+			ready(){
+				let self = this;
+				
+			},	
+			onTrack(e){			
+				let self=this;
+				let scrolled = this.$.container.scrollTop;
+				let dy = e.detail.dy;
+				if(scrolled === 0 && dy>0){
+					self.debounce("load",self.loadItems,250);					
+				}
+			},
+            handleTap: function(e) {
+			    console.log(e);
+                this.mesCount+=3;
+			    this.loadItems();
+                var div = this.$.rep;
+                //var template = document.querySelector('container');
+                div.render();
+                //this.$..render();
+                console.log("r");
+
+            },
+			beginDataLoad(){
+				let self = this;
+				NetworkUtils.ws("ws://"+this.user.server+"/ws",mes=>{
+				    if (mes.data!=""){
+                        self.push("mass",mes.data)
+					}//отерываем подключение
+				});
+				this.loadItems();							
+			},
+			loadItems(){
+				let self = this;
+				self.set("isLoading",true);
+				NetworkUtils.makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,data=>{//передали последнюю дату в запрос - вернутся все сообщения
+					console.log("Данные из запроса"+data);
+                    if (data!=""){
+                        var mass  = data.split(';');
+                        self.set('mass', mass.reverse());
+                    }//отерываем подключение
+
+
+//					let newItems =data;
+//					this.set('mass', []);
+////					this.mass.length = 0;
+//					for (var i = 0;i<newItems.length;i++){
+//                        var date = new Date();
+//                        date.setTime(newItems[i].stamp);
+//                        console.log("Данные после парсинга(дата)  "+date);
+//                        var string = newItems[i].name + date.toLocaleString();
+//                        this.push('mass', string);
+////                        self.mass.unshift(newItems[i]);
+//					}
+//					//this.items= newItems;
+//					//self.set('mass', newItems.reverse());
+//					console.log(this.mass);
+//					let msgs= self.mass;
+//					if(msgs.length){
+//						this.last=msgs[0].stamp;
+//					}
+					self.set("isLoading",false);
+				},error=>{
+					self.set("isLoading",false);
+				});
+			},
+			sendMessage(){
+			    NetworkUtils.send(this.user.name+' '+new Date().toLocaleString());
+//				NetworkUtils.send(JSON.stringify({
+//					name:this.user.name,
+//					stamp:+(new Date())
+//				}));
+			},
+			getDate(index){				
+				return (new Date(this.mass[index].stamp)).toLocaleString();
+			},
+			getName(index){
+				return this.mass[index].name;
+			},
+			getColor(index){
+				let name = this.getName(index);
+				if(!this.colorMap[name]){
+					let idx = Math.floor(this.colors.length*Math.random());
+					let color ="color:"+this.colors[idx]+";";
+					this.colorMap[name]=color;
+				}
+				return this.colorMap[name];			
+			}
+		});
+        });
+	</script>
+</dom-module>

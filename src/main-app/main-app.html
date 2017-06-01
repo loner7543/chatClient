@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../login-page/login-page.html">
+<link rel="import" href="../chat-page/chat-page.html">
+<link rel="stylesheet" href="../css/main.css">
+<script src = "../js/NetworkUtils.js"></script>
+
+<dom-module id="main-app">
+  <template>
+	
+	<paper-toolbar class="toolbar">
+		<div class="title">Чат</div>
+	</paper-toolbar>
+
+	  <app-location route="{{route}}"></app-location>
+	  <app-route
+			  route="{{route}}"
+			  pattern="/:page"
+			  data="{{routeData}}"
+			  tail="{{subroute}}"></app-route>
+	
+	<iron-pages id="pages"
+				role="main"
+			    selected="[[routeData.page]]"
+				selected-attribute="active"
+				attr-for-selected="name"
+				fallback-selection="show">
+					<chat-page name="chat" user="{{user}}" id="chat"></chat-page><!--передали пользователя-->
+					<login-page name="login" user="{{user}}"></login-page>
+	</iron-pages>
+
+  </template>
+
+  <script>
+    Polymer({
+
+		is: 'main-app',
+		attached(){
+			this.goToLogin();
+		},
+		listeners:{
+			'login':'goToChat'
+		},
+		properties:{
+			user:{
+				type:Object,
+				value(){
+					return {
+						name:"",
+						server:""
+					}
+				}
+			}
+		},
+		goToChat(){
+			this.async(function(){
+				if(this.routeData.page!='chat'){
+					this.set('routeData.page',"chat");
+					this.$.chat.beginDataLoad();
+				}
+			});
+		},
+		goToLogin(){
+			this.async(function(){// возвращает промис
+				if(this.routeData.page!='login'){
+					this.set('routeData.page',"login");
+				}
+			});
+		}
+	
+
+    });
+  </script>
+</dom-module>
