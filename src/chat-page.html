@@ -13,7 +13,7 @@
 						<div class="loading"></div>
 					</div>
 				</template>
-				<template is="dom-repeat" items="{{items}}">
+				<template is="dom-repeat" items="{{mass}}" id="rep">
 					<div class="txt">
 						 <b style$="[[getColor(index)]]">{{getName(index)}}</b><span class="time">{{getDate(index)}}</span>--Yo!
 					</div>
@@ -46,9 +46,9 @@
 
 				mesCount:{
                     type:Number,
-                    value: 10
+                    value: 3
 				},
-				items:{
+				mass:{
 					type:Array,
 					value(){
 						return [];
@@ -92,13 +92,19 @@
 			},
             handleTap: function(e) {
 			    console.log(e);
-                this.mesCount+=10;
+                this.mesCount+=3;
 			    this.loadItems();
+                var div = this.$.rep;
+                //var template = document.querySelector('container');
+                div.render();
+                //this.$..render();
+                console.log("r");
+
             },
 			beginDataLoad(){
 				let self = this;
 				NetworkUtils.ws("ws://"+this.user.server+"/ws",mes=>{			//отерываем подключение
-					self.push("items",JSON.parse(mes.data))					
+					self.unshift("mass",JSON.parse(mes.data))
 				});
 				this.loadItems();							
 			},
@@ -106,13 +112,18 @@
 				let self = this;
 				self.set("isLoading",true);
 				NetworkUtils.makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,data=>{//передали последнюю дату в запрос - вернутся все сообщения
+					console.log("Данные из запроса"+data);
 					let newItems =JSON.parse(data);
-					this.set('items', newItems.reverse());
-					//self.items=newItems;
-//					for(let i = 0; i<newItems.length;i++){
-//						self.items.push(newItems[i])//self.push("items",newItems[i]);
-//					}
-					let msgs= self.items;
+//					this.mass.length = 0;
+					for (var i = 0;i<newItems.length;i++){
+                        var date = new Date();
+                        date.setTime(newItems[i].stamp);
+                        console.log("Данные после парсинга(дата)  "+date);
+//                        self.mass.unshift(newItems[i]);
+					}
+					//this.items= newItems;
+					this.set('mass', newItems.reverse());
+					let msgs= self.mass;
 					if(msgs.length){
 						this.last=msgs[0].stamp;
 					}		
@@ -128,10 +139,10 @@
 				}));
 			},
 			getDate(index){				
-				return (new Date(this.items[index].stamp)).toLocaleString();
+				return (new Date(this.mass[index].stamp)).toLocaleString();
 			},
 			getName(index){
-				return this.items[index].name;
+				return this.mass[index].name;
 			},
 			getColor(index){
 				let name = this.getName(index);

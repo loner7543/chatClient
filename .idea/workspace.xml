@@ -2,12 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1f6b59-2178-4603-b0cd-406166f848df" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/app-route/app-location.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/app-route/app-route-converter-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/app-route/app-route.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/font-roboto/roboto.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-a11y-announcer/iron-a11y-announcer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-behaviors/iron-button-state.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-behaviors/iron-control-state.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-flex-layout/iron-flex-layout.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-form-element-behavior/iron-form-element-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-icon/iron-icon.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-icons/iron-icons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-iconset-svg/iron-iconset-svg.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-input/iron-input.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-location/iron-location.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-location/iron-query-params.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-meta/iron-meta.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-pages/iron-pages.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-resizable-behavior/iron-resizable-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-selector/iron-selectable.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-selector/iron-selection.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/iron-validatable-behavior/iron-validatable-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-behaviors/paper-button-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-behaviors/paper-ripple-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-button/paper-button.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-fab/paper-fab.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input-addon-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input-behavior.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input-char-counter.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input-container.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input-error.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-input/paper-input.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-material/paper-material-shared-styles.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-ripple/paper-ripple.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-styles/color.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-styles/default-theme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-styles/shadow.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-styles/typography.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/paper-toolbar/paper-toolbar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/polymer/polymer-micro.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/polymer/polymer-mini.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/polymer/polymer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bower_components/webcomponentsjs/webcomponents-lite.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/images/chrome-logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/src/chat-page/chat-page.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/src/login-page/login-page.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/src/main-app/NetworkUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/src/main-app/main-app.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/src/main-app/main-app.html" afterPath="$PROJECT_DIR$/build/src/main-app/main-app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat-page.html" afterPath="$PROJECT_DIR$/src/chat-page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/chat.css" afterPath="$PROJECT_DIR$/src/css/chat.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/NetworkUtils.js" afterPath="$PROJECT_DIR$/src/js/NetworkUtils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +75,8 @@
       <file leaf-file-name="chat-page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/chat-page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="108" column="51" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="51" />
+            <state relative-caret-position="-1211">
+              <caret line="15" column="67" lean-forward="false" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#paper-fab#0;n#div#1;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
@@ -38,7 +88,7 @@
       <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="-170">
               <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="33" />
               <folding>
                 <marker date="1494619572559" expanded="true" signature="1190:1202" ph="{...}" />
@@ -52,21 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main-app.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/src/main-app/main-app.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NetworkUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/NetworkUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-430">
-              <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            <state relative-caret-position="187">
+              <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -143,6 +183,8 @@
       <find>beginDataLoad</find>
       <find>onTrack</find>
       <find>sendMessage</find>
+      <find>mass</find>
+      <find>items</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,6 +247,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -252,13 +295,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/10Semestr/Lab1POlymerNewCli" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -370,12 +412,15 @@
       <workItem from="1495836728109" duration="242000" />
       <workItem from="1495861803448" duration="3821000" />
       <workItem from="1496070888185" duration="3573000" />
-      <workItem from="1496231984293" duration="16429000" />
+      <workItem from="1496231984293" duration="17034000" />
+      <workItem from="1496307722377" duration="11296000" />
+      <workItem from="1496332119787" duration="646000" />
+      <workItem from="1496333787356" duration="297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47234000" />
+    <option name="totallyTimeSpent" value="60078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -384,13 +429,13 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24709609" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -413,8 +458,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/chat-page.html</url>
-          <line>125</line>
-          <properties />
+          <line>136</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -493,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -735,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,9 +819,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/NetworkUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="-170">
           <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="33" />
           <folding>
             <marker date="1494619572559" expanded="true" signature="1190:1202" ph="{...}" />
@@ -794,18 +842,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/NetworkUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chat-page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="108" column="51" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="51" />
+        <state relative-caret-position="-1211">
+          <caret line="15" column="67" lean-forward="false" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#paper-fab#0;n#div#1;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
