@@ -11,6 +11,20 @@
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="/src/main-app/main-app.html">
+    <script>
+        if ('serviceWorker' in navigator) {
+            console.log("service worker started")
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+                    // регистрация сработала
+                    console.log('Registration succeeded. Scope is ' + reg.scope);
+                }).catch(function(error) {
+                    // регистрация прошла неудачно
+                    console.log('Registration failed with ' + error);
+                });
+            });
+        }
+    </script>
   </head>
   <body>
     <main-app></main-app>

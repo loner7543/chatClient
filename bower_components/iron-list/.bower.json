@@ -89,6 +89,5 @@
   },
   "_source": "https://github.com/PolymerElements/iron-list.git",
   "_target": "^2.0.0",
-  "_originalSource": "PolymerElements/iron-list",
-  "_direct": true
+  "_originalSource": "PolymerElements/iron-list"
 }

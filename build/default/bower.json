@@ -23,13 +23,12 @@
     "paper-input": "PolymerElements/paper-input#^1.1.24",
     "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^1.5.1",
     "paper-radio-button": "PolymerElements/paper-radio-button#^1.4.0",
-    "iron-list": "PolymerElements/iron-list#^2.0.0"
-  },
-  "devDependencies": {
-    "web-component-tester": "^4.0.0"
+    "iron-list": "PolymerElements/iron-list#^2.0.0",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^2.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0"
   },
   "resolutions": {
-    "mocha": "^2.3.0",
     "test-fixture": "^1.0.0",
     "iron-flex-layout": "~1.3.0"
   }
