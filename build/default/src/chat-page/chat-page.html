@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="stylesheet" href="../css/chat.css">
+<script type="text/javascript" src="../js/db.js"></script>
 
 
 </head><body><dom-module id="chat-page">
@@ -32,12 +33,10 @@
 			properties:{
 				user:{
 					type:Object,
-					value(){
-						return {
+					value: {
 							name:"",
 							server:""
 						}
-					}
 				},
 				last:{
 					type:Number,
@@ -58,16 +57,11 @@
 				},
 				colorMap:{
 					type:Object,
-					value(){
-						return {}
-					}
+					value:[]
 				},
 				colors:{
 					type:Array,
-					value()
-					{
-						return ["#f24949"];
-					}
+					value:["#f24949"]
 				},
 				isLoading:{
 					type:Boolean,
@@ -79,14 +73,14 @@
 				'container.track':'onTrack',
 				'loadBtn.tap':'handleTap'
 			},			
-			ready(){
-				let self = this;
+			ready:function(){
+				var self = this;
 				
-			},	
-			onTrack(e){			
-				let self=this;
-				let scrolled = this.$.container.scrollTop;
-				let dy = e.detail.dy;
+			},
+			onTrack:function(e){
+                var self=this;
+                var scrolled = this.$.container.scrollTop;
+                var dy = e.detail.dy;
 				if(scrolled === 0 && dy>0){
 					self.debounce("load",self.loadItems,250);					
 				}
@@ -102,19 +96,19 @@
                 console.log("r");
 
             },
-			beginDataLoad(){
-				let self = this;
-				NetworkUtils.ws("ws://"+this.user.server+"/ws",mes=>{
+			beginDataLoad:function(e){
+                var self = this;
+				ws("ws://"+this.user.server+"/ws",function(mes){
 				    if (mes.data!=""){
                         self.push("mass",mes.data)
 					}//отерываем подключение
 				});
 				this.loadItems();							
 			},
-			loadItems(){
-				let self = this;
+			loadItems:function(){
+                var self = this;
 				self.set("isLoading",true);
-				NetworkUtils.makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,data=>{//передали последнюю дату в запрос - вернутся все сообщения
+				makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,function(data){//передали последнюю дату в запрос - вернутся все сообщения
 					console.log("Данные из запроса"+data);
                     if (data!=""){
                         var mass  = data.split(';');
@@ -122,47 +116,25 @@
                     }//отерываем подключение
 
 
-//					let newItems =data;
-//					this.set('mass', []);
-////					this.mass.length = 0;
-//					for (var i = 0;i<newItems.length;i++){
-//                        var date = new Date();
-//                        date.setTime(newItems[i].stamp);
-//                        console.log("Данные после парсинга(дата)  "+date);
-//                        var string = newItems[i].name + date.toLocaleString();
-//                        this.push('mass', string);
-////                        self.mass.unshift(newItems[i]);
-//					}
-//					//this.items= newItems;
-//					//self.set('mass', newItems.reverse());
-//					console.log(this.mass);
-//					let msgs= self.mass;
-//					if(msgs.length){
-//						this.last=msgs[0].stamp;
-//					}
 					self.set("isLoading",false);
-				},error=>{
+				},function(error){
 					self.set("isLoading",false);
 				});
 			},
-			sendMessage(){
-			    NetworkUtils.send(this.user.name+' '+new Date().toLocaleString());
-//				NetworkUtils.send(JSON.stringify({
-//					name:this.user.name,
-//					stamp:+(new Date())
-//				}));
+			sendMessage:function(){
+			    send(this.user.name+' '+new Date().toLocaleString());
 			},
-			getDate(index){				
+			getDate:function(index){
 				return (new Date(this.mass[index].stamp)).toLocaleString();
 			},
-			getName(index){
+			getName:function(index){
 				return this.mass[index].name;
 			},
-			getColor(index){
-				let name = this.getName(index);
+			getColor:function(index){
+                var name = this.getName(index);
 				if(!this.colorMap[name]){
-					let idx = Math.floor(this.colors.length*Math.random());
-					let color ="color:"+this.colors[idx]+";";
+                    var idx = Math.floor(this.colors.length*Math.random());
+                    var color ="color:"+this.colors[idx]+";";
 					this.colorMap[name]=color;
 				}
 				return this.colorMap[name];			

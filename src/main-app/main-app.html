@@ -35,27 +35,28 @@
   </template>
 
   <script>
-    Polymer({
+	  /* eslint-disable linebreak-style,linebreak-style */
+
+      Polymer({
 
 		is: 'main-app',
-		attached(){
-			this.goToLogin();
-		},
+		attached:function () {
+            this.goToLogin();
+        },
+
 		listeners:{
 			'login':'goToChat'
 		},
 		properties:{
 			user:{
 				type:Object,
-				value(){
-					return {
+				value:{
 						name:"",
 						server:""
 					}
 				}
-			}
 		},
-		goToChat(){
+		goToChat:function(){
 			this.async(function(){
 				if(this.routeData.page!='chat'){
 					this.set('routeData.page',"chat");
@@ -63,7 +64,7 @@
 				}
 			});
 		},
-		goToLogin(){
+		goToLogin:function(){
 			this.async(function(){// возвращает промис
 				if(this.routeData.page!='login'){
 					this.set('routeData.page',"login");

@@ -1,15 +1,15 @@
-;(function(){
-	let socket;
-	let _path;
+// ;(function(){
+	var socket;
+	var _path;
 	function ws(path,f){
 		if(socket){
 			socket.close();
 			socket.onerror=null;
 		}
 		socket = new WebSocket(path);
-		socket.onerror = ()=>{
-			ws(path);
-		}
+		socket.onerror = function () {
+            ws(path);
+        };
 		socket.onmessage=f;
 		_path=path;
 	
@@ -21,9 +21,9 @@
 				case 3://закрыто
 					socket=new WebSocket(_path);
 				case 0:// соединение еще не открыто
-					socket.onopen=()=>{
-						socket.send(data);
-					}
+					socket.onopen=function () {
+                        socket.send(data);
+                    };
 				break;
 				case 1://готово
 					socket.send(data);
@@ -31,9 +31,9 @@
 			}			
 		}else{
 			socket=new WebSocket(_path);				
-			socket.onopen=()=>{
-				socket.send(data);
-			}
+			socket.onopen=function () {
+                socket.send(data);
+            };
 		}		
 	}
 	
@@ -45,7 +45,7 @@
 	}
 	
 	function makeRequest(path,f,f2){
-		let xhr =new XMLHttpRequest();
+		var xhr =new XMLHttpRequest();
 		if(f){
 			xhr.onload = function(){
 				f(this.response);	
@@ -60,11 +60,11 @@
 		xhr.send(null);	
 	}
 	
-	window.NetworkUtils={
-		ws,
-		send,
-		close,
-		makeRequest
-	}
+	// window.NetworkUtils={
+	// 	ws,
+	// 	send,
+	// 	close,
+	// 	makeRequest
+	// }
 
-})();
+// })();

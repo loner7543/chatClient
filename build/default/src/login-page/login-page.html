@@ -20,18 +20,17 @@
 			properties:{
 				user:{
 					type:Object,
-					value(){
-						return {
+					value:{
 							name:"",
 							server:""
 						}
-					}
+
 				}			
 			},
 			listeners:{
 				'login.tap':'goChat'
 			},
-            goChat(){
+            goChat:function(){
 				this.fire("login");			
 			}
 		
