@@ -1,4 +1,4 @@
-<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<!--suppress ALL --><html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
@@ -22,12 +22,11 @@
 			</div>
 		<div class="add-button">
 			<paper-fab style="color:whie;" id="add" label="Yo!"></paper-fab><br>
-			<paper-button id="loadBtn">load many</paper-button>
+			<paper-button id="loadBtn">load more</paper-button>
+			<paper-button raised="" noink="" on-click="clear">Clear db</paper-button>
 		</div>
 	</template>
 	<script>
-        window.addEventListener("WebComponentsReady", function(){
-            console.log("ready");
 		Polymer({
 			is:"chat-page",
 			properties:{
@@ -50,10 +49,6 @@
 				mass:{
 					type:Array,
 					value: []
-//					value(){
-//						return [];
-//					},
-//					notify:true,
 				},
 				colorMap:{
 					type:Object,
@@ -75,8 +70,121 @@
 			},			
 			ready:function(){
 				var self = this;
-				
+                count = 3;
+                this.firststart(function () {
+                    self.upd;// достань с бд
+                });
 			},
+
+            updateRecs:function (callback) {
+			    console.log("Update из бд ")
+                mes = [];
+                var db = dbMes.result;
+                var tx = db.transaction("OS", "readwrite");
+                var store = tx.objectStore("OS");
+                var index2 = store.index("message");
+                index2.openCursor().onsuccess = function (event) {//
+                    cursor = event.target.result;
+                    if (cursor) {
+                        var messag = {
+                            id: cursor.value.id,
+                            message: cursor.value.message,
+                        };
+                        if (ind < cursor.value.id) ind = cursor.value.id;
+                        mes.push(messag);
+
+                        console.log("cursor: " + cursor.value.id + " " + cursor.value.message);
+                        cursor.continue();
+
+                        callback();
+
+                    }
+                    else {
+                        console.log("ind: " + ind);
+                    }
+
+                }
+
+//                this.upd();
+            },
+			
+			upd :function () {
+                this.splice('mass',0);
+                var j = 0;
+                for (i = mes.length - 1; i >= 0; i--) {
+                    if (j < count) {
+                        var messages = {
+                            message: mes[i].message,
+                        };
+                        this.push('mass', messages.message);
+                    }
+                    j++;
+                }
+            },
+
+            firststart : function (callback) {
+			    count = 3;
+                window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+                dbMes = window.indexedDB.open("ChatDB", 1);
+
+                mes = [];//сообщения из бд
+                dbMes.onupgradeneeded = function (e) {
+                    console.log(2);
+//                    debugger;
+                    var db = e.currentTarget.result;
+                    var store = db.createObjectStore("OS", {keyPath: "id"});
+                    store.createIndex("message", "message");
+                }
+
+                dbMes.onsuccess = function () {
+                    console.log("1");
+//                    debugger;
+                    var db = dbMes.result;
+                    var tx = db.transaction("OS", "readwrite");
+                    var store = tx.objectStore("OS");
+                    var index2 = store.index("message");
+                    index2.openCursor().onsuccess = function (event) {
+                        cursor = event.target.result;
+                        if (cursor) {
+
+                            var messag = {
+                                id: cursor.value.id,
+                                message: cursor.value.message,
+                            };
+                            if (ind < cursor.value.id) ind = cursor.value.id;
+                            mes.push(messag);
+
+                            console.log("cursor: " + cursor.value.id + " " + cursor.value.message);
+                            cursor.continue();
+
+                            callback();
+
+                        } else {
+                            console.log("ind: " + ind);
+
+                        }
+                    };
+                }
+                dbMes.onerror = function (err) {
+					console.log(err);
+                }
+            },
+
+            clear : function () {
+                var db = dbMes.result;
+                var tx = db.transaction("OS", "readwrite");
+                var store = tx.objectStore("OS");
+                var r = store.clear();
+//                mes.slice(0, mes.length);
+                mes = [];
+                count = 3;
+
+                var self = this;
+                this.updateRecs(function () {
+                    self.upd();
+                });
+            },
+
 			onTrack:function(e){
                 var self=this;
                 var scrolled = this.$.container.scrollTop;
@@ -88,30 +196,61 @@
             handleTap: function(e) {
 			    console.log(e);
                 this.mesCount+=3;
-			    this.loadItems();
+                count = count + 3;
+//			    this.loadItems();
                 var div = this.$.rep;
                 //var template = document.querySelector('container');
                 div.render();
                 //this.$..render();
                 console.log("r");
+                var self = this;
+                this.updateRecs(function () {
+                    self.upd();
+                });
 
             },
-			beginDataLoad:function(e){
+			beginDataLoad:function(){
                 var self = this;
-				ws("ws://"+this.user.server+"/ws",function(mes){
-				    if (mes.data!=""){
-                        self.push("mass",mes.data)
+				ws("ws://"+this.user.server+"/ws",function(mes1){
+				    if (mes1.data!=""){
+                        self.push("mass",mes1.data);
+                        var db = dbMes.result;
+                        var tx = db.transaction("OS", "readwrite");
+                        var store = tx.objectStore("OS");
+                        ind = ind + 1;
+                        console.log("ind: " + ind);
+
+                        // Add some datamess
+                        store.put({id: ind, message: mes1.data});
+
+                        mes.push(mes1.data);
 					}//отерываем подключение
 				});
-				this.loadItems();							
+//				this.loadItems();
+                self = this;
+                this.updateRecs(function () {
+                    self.upd();
+                });
+
 			},
 			loadItems:function(){
                 var self = this;
 				self.set("isLoading",true);
-				makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,function(data){//передали последнюю дату в запрос - вернутся все сообщения
-					console.log("Данные из запроса"+data);
-                    if (data!=""){
-                        var mass  = data.split(';');
+				makeRequest("http://"+this.user.server+"/api/msg?from="+this.last+"&count="+this.mesCount,function(data) {//передали последнюю дату в запрос - вернутся все сообщения
+                    console.log("Данные из запроса" + data);
+                    if (data != "" && data != dataLast) {
+                        data = dataLast;
+                        var mass = data.split(';');
+//                        for (var i = 0;i<mass.length;i++){
+//                            var db = dbMes.result;
+//                            var tx = db.transaction("OS", "readwrite");
+//                            var store = tx.objectStore("OS");
+//                            ind = ind + 1;
+//                            console.log("ind: " + ind);
+//
+//                            // Add some datamess
+//                            store.put({id: ind, message: mass[i]});
+//						}
                         self.set('mass', mass.reverse());
                     }//отерываем подключение
 
@@ -122,7 +261,18 @@
 				});
 			},
 			sendMessage:function(){
-			    send(this.user.name+' '+new Date().toLocaleString());
+			    var message = this.user.name+' '+new Date().toLocaleString();
+                var db = dbMes.result;
+                var tx = db.transaction("OS", "readwrite");
+                var store = tx.objectStore("OS");
+                ind = ind + 1;
+                console.log("ind: " + ind);
+
+                // Add some datamess
+                store.put({id: ind, message: message});
+
+                mes.push(message);
+			    send(message);
 			},
 			getDate:function(index){
 				return (new Date(this.mass[index].stamp)).toLocaleString();
@@ -140,6 +290,13 @@
 				return this.colorMap[name];			
 			}
 		});
-        });
+
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+       var dbMes //= window.indexedDB.open("ChatDB", 2);
+        var ind = 0;
+        var cursor;
+        var mes = [];
+        var count = 3;
+        var dataLast = "0;"
 	</script>
 </dom-module></body></html>

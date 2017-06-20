@@ -50,7 +50,9 @@
 		goToChat:function(){
 			this.async(function(){
 				if(this.routeData.page!='chat'){
-					this.set('routeData.page',"chat");
+                    this.set('routeData.page',"chat");
+//					debugger;
+					console.log(this.$.chat);
 					this.$.chat.beginDataLoad();
 				}
 			});
